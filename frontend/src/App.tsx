@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import Home from "./Home";
 
 export default function App(props) {
-    const [text, setText] = useState('⚛ Hello React!');
-
     return (
-        <>
-            <p>{ text }</p>
-            <input type={text} onChange={(e) => setText(e.target.value)} />
-        </>
+        <Router>
+            <Switch>
+                <Route path='/'>
+                    <Home />
+                </Route>
+            </Switch>
+        </Router>
     );
 }
