@@ -6,6 +6,11 @@ const express = require("express");
 
 const app = express();
 const server = createServer(app);
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
 
 console.log('test');
 console.log(__dirname)
@@ -16,7 +21,7 @@ app.set('view engine', 'html');
 app.set('views', path.join(__dirname, '../../frontend/dist'));
 app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.render('index');
 });
 
