@@ -6,11 +6,16 @@ import {
     Link
 } from "react-router-dom";
 import Home from "./Home";
+import Lobby from "./Lobby";
 
 export default function App(props) {
     return (
         <Router>
             <Switch>
+                {/* Order is important, more complex routes first */}
+                <Route path='/lobby'>
+                    <Lobby />
+                </Route>
                 <Route path='/'>
                     <Home />
                 </Route>
